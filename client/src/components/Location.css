@@ -1,0 +1,21 @@
+
+.cus-location-flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.cus-location-text {
+  color: #000;
+}
+.cus-location-icon {
+  flex-basis: 26px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.cus-location-desc {
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

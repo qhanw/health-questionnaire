@@ -1,0 +1,266 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btn {
+  padding: 24px 15px;
+}
+
+.am-list .am-list-header,
+.am-list .am-list-item .am-list-line .am-list-content,
+.am-list .am-list-item .am-input-label,
+.am-list .am-list-item .am-input-control input {
+  font-size: 15px;
+}
+
+.form-list .am-list-header {
+  position: relative;
+  display: flex;
+}
+.form-list .am-list-header::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  content: "";
+  background-color: #f00;
+  width: 0;
+  height: 100%;
+  transition: all 0.15s ease-out;
+}
+.form-list.has-error .am-list-header::after {
+  width: 5px;
+  transition: all 0.1s ease-in;
+}
+
+.form-list.has-error .am-list-footer {
+  color: #f00;
+  background-color: #fff;
+  position: relative;
+}
+
+.form-list.has-error .icon-alert {
+  height: 16px;
+  width: 16px;
+  margin-right: 7px;
+  background-image: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTgnIGhlaWdodD0nMTgnIHZpZXdCb3g9JzAgMCAxOCAxOCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNOSAxLjI2NmE3LjY5IDcuNjkgMCAwIDEgNS40NjkgMi4yNjRjLjcxLjcxIDEuMjY5IDEuNTM4IDEuNjU3IDIuNDU5LjQwNC45NTQuNjA4IDEuOTY3LjYwOCAzLjAxMWE3LjY5IDcuNjkgMCAwIDEtMi4yNjQgNS40NjkgNy42OTQgNy42OTQgMCAwIDEtMi40NTkgMS42NTdBNy42NzUgNy42NzUgMCAwIDEgOSAxNi43MzRhNy42OSA3LjY5IDAgMCAxLTUuNDY5LTIuMjY0IDcuNjk0IDcuNjk0IDAgMCAxLTEuNjU3LTIuNDU5QTcuNjc1IDcuNjc1IDAgMCAxIDEuMjY2IDkgNy42OSA3LjY5IDAgMCAxIDMuNTMgMy41MzFhNy42OTQgNy42OTQgMCAwIDEgMi40NTktMS42NTdBNy42NzUgNy42NzUgMCAwIDEgOSAxLjI2NnpNOSAwYTkgOSAwIDAgMC05IDkgOSA5IDAgMCAwIDkgOSA5IDkgMCAwIDAgOS05IDkgOSAwIDAgMC05LTl6bTAgMTEuMjVhLjcwMy43MDMgMCAwIDEtLjcwMy0uNzAzVjQuMDZhLjcwMy43MDMgMCAxIDEgMS40MDYgMHY2LjQ4NkEuNzAzLjcwMyAwIDAgMSA5IDExLjI1em0tLjc5MSAxLjkxNmEuNzkxLjc5MSAwIDEgMSAxLjU4MiAwIC43OTEuNzkxIDAgMCAxLTEuNTgyIDB6JyBmaWxsPScjRjUwJyBmaWxsLXJ1bGU9J2V2ZW5vZGQnLz48L3N2Zz4=);
+  background-size: 16px auto;
+}
+
+.hq-response-table {
+  width: 100vw;
+  overflow-x: auto;
+}
+.hq-table {
+  border-collapse: collapse;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 820px;
+}
+.hq-table > thead > tr > th,
+.hq-table > tbody > tr > td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.hq-table > thead > tr > th:first-child {
+  width: 60px;
+  text-align: center;
+}
+
+.hq-table-header {
+  text-align: left;
+  padding: 15px 15px 9px 15px;
+  font-size: 15px;
+  color: #888;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hq-table > thead > tr > th:nth-child(3) {
+  width: 110px;
+}
+.hq-table > thead > tr > th:nth-child(4) {
+  width: 110px;
+}
+.hq-table > thead > tr > th:nth-child(5) {
+  width: 110px;
+}
+.hq-table > thead > tr > th:nth-child(6) {
+  width: 110px;
+}
+.hq-table > thead > tr > th:nth-child(7) {
+  width: 110px;
+}
+
+.hq-table .am-radio-wrapper {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  html:not([data-scale]) .form-list.has-error .am-list-footer::after {
+    content: "";
+    position: absolute;
+    background-color: #ddd;
+    display: block;
+    z-index: 1;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform-origin: 50% 100%;
+    transform: scaleY(0.5);
+  }
+}
+
+.ant-spin {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum";
+  position: absolute;
+  display: none;
+  color: #1890ff;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s
+    cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  transition: -webkit-transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+    -webkit-transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+}
+
+.ant-spin-spinning {
+  position: static;
+  display: inline-block;
+  opacity: 1;
+}
+
+.ant-spin-dot {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.ant-spin-dot-item {
+  position: absolute;
+  display: block;
+  width: 9px;
+  height: 9px;
+  background-color: #1890ff;
+  border-radius: 100%;
+  -webkit-transform: scale(0.75);
+  -ms-transform: scale(0.75);
+  transform: scale(0.75);
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: 0.3;
+  -webkit-animation: antSpinMove 1s infinite linear alternate;
+  animation: antSpinMove 1s infinite linear alternate;
+}
+
+.ant-spin-dot-item:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.ant-spin-dot-item:nth-child(2) {
+  top: 0;
+  right: 0;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.ant-spin-dot-item:nth-child(3) {
+  right: 0;
+  bottom: 0;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.ant-spin-dot-item:nth-child(4) {
+  bottom: 0;
+  left: 0;
+  -webkit-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}
+
+.ant-spin-dot-spin {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-animation: antRotate 1.2s infinite linear;
+  animation: antRotate 1.2s infinite linear;
+}
+
+.ant-spin-lg .ant-spin-dot {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.ant-spin-lg .ant-spin-dot i {
+  width: 14px;
+  height: 14px;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .ant-spin-blur {
+    background: #fff;
+    opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}

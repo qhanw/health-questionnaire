@@ -1,0 +1,23 @@
+.sms {
+  background-color: #fff;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sms header {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto 36px;
+}
+
+.sms-number {
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+
+.sms-description {
+  padding: 0 15px;
+  font-size: 16px;
+  color: #333;
+}
+
