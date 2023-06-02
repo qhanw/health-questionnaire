@@ -88,8 +88,8 @@ function CheckboxGroup({
         <CheckboxItem
           disabled={disabled || (finalVal?.includes(i.value) ? false : limit)}
           key={i.value}
-          checked={finalVal?.includes(i.value)}
-          onChange={(e: any) => onInnerChange(e.target.checked, i.value)}
+          checked={!!finalVal?.includes(i.value)}
+          onChange={(bool) => onInnerChange(bool, i.value)}
         >
           {i.label}
         </CheckboxItem>

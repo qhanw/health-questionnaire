@@ -4,8 +4,6 @@ import { Button, List, NavBar, Grid, Input, Modal, Form } from "antd-mobile";
 import RadioGroup from "./components/RadioGroup";
 import CheckboxGroup from "./components/CheckboxGroup";
 
-// import FormItem from "./components/FormItem";
-import TdRadioGroup from "./components/TdRadioGroup";
 import { remarkValidator, requireValidator } from "./validate";
 import { storage } from "./utils";
 import { useMutate } from "./service";
@@ -32,19 +30,24 @@ const rateImportant = [
 function Page() {
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [disabled, setDisabled] = useState<boolean>(true);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const { loading, run } = useMutate();
 
   useEffect(() => {
     const cache = storage.get("fieldsValue") || {};
-    if (cache.part4) form.setFieldsValue(cache.part4);
+    if (cache.part4) {
+      form.setFieldsValue(cache.part4);
+      setDisabled(!(+cache.part4["6"] === 2));
+    }
   }, []);
 
   const onChangeSix = (v: any) => {
-    const disabled = +v === 2;
+    const disabled = !(+v === 2);
+
     setDisabled(disabled);
-    if (!disabled) {
+
+    if (disabled) {
       form.setFieldsValue({ "7": undefined });
     }
   };
@@ -57,22 +60,8 @@ function Page() {
       );
 
       alert({
-        content: (
-          <>
-            提交验证失败
-            <div
-              style={{
-                textAlign: "left",
-                overflowY: "auto",
-                maxHeight: "40vh",
-              }}
-            >
-              {errs.map((c: any) => (
-                <div>{c}</div>
-              ))}
-            </div>
-          </>
-        ),
+        title: "提交验证失败",
+        content: errs.map((c: any) => <div key={c}>{c}</div>),
       });
     });
 
@@ -99,7 +88,7 @@ function Page() {
 
       run(submitValues, () => {
         storage.clear();
-        navigate("/");
+        navigate("/", { replace: true });
         navigate("/result");
       });
     }
@@ -110,12 +99,19 @@ function Page() {
       <Form
         form={form}
         footer={
-          <Grid className="btn" columns={2} gap={8}>
+          <Grid columns={2} gap={8}>
             <Grid.Item>
-              <Button block onClick={() => navigate(-1)}>上一部分</Button>
+              <Button block onClick={() => navigate(-1)}>
+                上一部分
+              </Button>
             </Grid.Item>
             <Grid.Item>
-              <Button block color="primary" loading={loading} onClick={onSubmit}>
+              <Button
+                block
+                color="primary"
+                loading={loading}
+                onClick={onSubmit}
+              >
                 提交
               </Button>
             </Grid.Item>
@@ -179,7 +175,7 @@ function Page() {
             header={
               <div style={{ display: "flex" }}>
                 <span>{ques.order}、</span>
-                <div style={{ marginLeft: 0 }}>{ques.desc}</div>
+                <div>{ques.desc}</div>
               </div>
             }
           >
@@ -194,7 +190,7 @@ function Page() {
                   </>
                 }
               >
-                <RadioGroup inline options={ques.options} />
+                <RadioGroup options={ques.options} />
               </FormItem>
             ))}
           </List>
@@ -269,11 +265,12 @@ function Page() {
 
         <FormItem
           name="7"
-          {...(!disabled ? {} : { rules: [{ validator: remarkValidator }] })}
+          {...(disabled ? {} : { rules: [{ validator: remarkValidator }] })}
           label="7、如果不愿意，您不愿意接种的原因是？（可多选）"
+          shouldUpdate
         >
           <CheckboxGroup
-            disabled={!disabled}
+            disabled={disabled}
             options={[
               { value: 1, label: "担心疫苗的有效性" },
               { value: 2, label: "担心疫苗的安全性" },

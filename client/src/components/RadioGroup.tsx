@@ -1,5 +1,4 @@
 import { useMemo, useState, useEffect } from "react";
-
 import { Radio, Input, Space } from "antd-mobile";
 
 const RadioItem = Radio;
@@ -47,7 +46,7 @@ function RadioGroup({
   };
 
   return (
-    <Space direction="vertical">
+    <Space direction={inline ? "horizontal" : "vertical"}>
       {options.map((item: any) => (
         <RadioItem
           disabled={disabled}

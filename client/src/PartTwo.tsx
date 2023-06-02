@@ -5,12 +5,10 @@ import { Button, List, NavBar, Form, Grid, Modal } from "antd-mobile";
 import RadioGroup from "./components/RadioGroup";
 import CheckboxGroup from "./components/CheckboxGroup";
 
-const FormItem = Form.Item;
-
-import TdRadioGroup from "./components/TdRadioGroup";
 import { remarkValidator, requireValidator } from "./validate";
 import { storage } from "./utils";
 
+const FormItem = Form.Item;
 const alert = Modal.alert;
 
 const rate = [
@@ -68,22 +66,8 @@ function Page() {
                       );
 
                       alert({
-                        content: (
-                          <>
-                            "提交验证失败",
-                            <div
-                              style={{
-                                textAlign: "left",
-                                overflowY: "auto",
-                                maxHeight: "40vh",
-                              }}
-                            >
-                              {errs.map((c: any) => (
-                                <div>{c}</div>
-                              ))}
-                            </div>
-                          </>
-                        ),
+                        title: "提交验证失败",
+                        content: errs.map((c: any) => <div key={c}>{c}</div>),
                       });
                     });
                   if (values) {
@@ -249,7 +233,7 @@ function Page() {
                 rules={[{ validator: requireValidator }]}
                 label={`${ques.order}.${c.order}、${c.desc}`}
               >
-                <RadioGroup inline options={ques.options} />
+                <RadioGroup options={ques.options} />
               </FormItem>
             ))}
           </List>

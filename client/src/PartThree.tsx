@@ -212,7 +212,7 @@ function Page() {
       <Form
         form={form}
         footer={
-          <Grid className="btn" columns={2} gap={8}>
+          <Grid columns={2} gap={8}>
             <Grid.Item>
               <Button block onClick={() => navigate(-1)}>
                 上一部分
@@ -232,22 +232,8 @@ function Page() {
                       );
 
                       alert({
-                        content: (
-                          <>
-                            提交验证失败
-                            <div
-                              style={{
-                                textAlign: "left",
-                                overflowY: "auto",
-                                maxHeight: "40vh",
-                              }}
-                            >
-                              {errs.map((c: any) => (
-                                <div>{c}</div>
-                              ))}
-                            </div>
-                          </>
-                        ),
+                        title: "提交验证失败",
+                        content: errs.map((c: any) => <div key={c}>{c}</div>),
                       });
                     });
 

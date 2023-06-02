@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ahooks": "2.9.6",
+    "ahooks": "^3.7.7",
     "antd-mobile": "^5.30.0",
     "antd-mobile-icons": "^0.3.0",
     "react": "^18.2.0",

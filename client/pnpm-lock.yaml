@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   ahooks:
-    specifier: 2.9.6
-    version: 2.9.6(react@18.2.0)
+    specifier: ^3.7.7
+    version: 3.7.7(react@18.2.0)
   antd-mobile:
     specifier: ^5.30.0
     version: 5.30.0(react-dom@18.2.0)(react@18.2.0)
@@ -56,16 +56,6 @@ devDependencies:
     version: 3.3.2
 
 packages:
-
-  /@ahooksjs/use-request@2.8.15(react@18.2.0):
-    resolution: {integrity: sha512-xhVaM4fyIiAMdVFuuU5i3CFUdFa/IblF+fvITVMFaUEO3w/V5tVCAF6WIA3T03n1/RPuzRkA7Ao1PFtSGtGelw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0
-    dependencies:
-      lodash.debounce: 4.0.8
-      lodash.throttle: 4.1.1
-      react: 18.2.0
-    dev: false
 
   /@babel/runtime@7.22.3:
     resolution: {integrity: sha512-XsDuspWKLUsxwCp6r7EhsExHtYfbe5oAGQ19kqngTdCPUoPQzOPdUbD/pB9PJiwb2ptYKQDjSJT3R6dC+EPqfQ==}
@@ -748,25 +738,6 @@ packages:
     resolution: {integrity: sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==}
     dev: false
 
-  /ahooks@2.9.6(react@18.2.0):
-    resolution: {integrity: sha512-HpAN50c9HpO8bSf/9xsJFAtQZfCrnU2YFJM4WBfJ8rHSucpjzG0WkqfwwuoROlAVAkqbGR98flPoimWrPYvsQQ==}
-    engines: {node: '>=8.0.0'}
-    peerDependencies:
-      react: ^16.8.6
-    dependencies:
-      '@ahooksjs/use-request': 2.8.15(react@18.2.0)
-      '@types/js-cookie': 2.2.7
-      dayjs: 1.11.7
-      intersection-observer: 0.7.0
-      js-cookie: 2.2.1
-      lodash.debounce: 4.0.8
-      lodash.isequal: 4.5.0
-      lodash.throttle: 4.1.1
-      react: 18.2.0
-      resize-observer-polyfill: 1.5.1
-      screenfull: 5.2.0
-    dev: false
-
   /ahooks@3.7.7(react@18.2.0):
     resolution: {integrity: sha512-5e5WlPq81Y84UnTLOKIQeq2cJw4aa7yj8fR2Nb/oMmXPrWMjIMCbPS1o+fpxSfCaNA3AzOnnMc8AehWRZltkJQ==}
     engines: {node: '>=8.0.0'}
@@ -1273,10 +1244,6 @@ packages:
     resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==}
     dev: false
 
-  /intersection-observer@0.7.0:
-    resolution: {integrity: sha512-Id0Fij0HsB/vKWGeBe9PxeY45ttRiBmhFyyt/geBdDHBYNctMRTE3dC1U3ujzz3lap+hVXlEcVaB56kZP/eEUg==}
-    dev: false
-
   /is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
@@ -1345,21 +1312,9 @@ packages:
       p-locate: 5.0.0
     dev: true
 
-  /lodash.debounce@4.0.8:
-    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-    dev: false
-
-  /lodash.isequal@4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: false
-
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
-
-  /lodash.throttle@4.1.1:
-    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
-    dev: false
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
