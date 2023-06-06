@@ -6,10 +6,12 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { QtnService } from './qtn.service';
 import { CreateQtnDto } from './dto/create-qtn.dto';
 import { UpdateQtnDto } from './dto/update-qtn.dto';
+import { QueryQtnDto } from './dto/query-qtn.dto';
 
 @Controller('qtn')
 export class QtnController {
@@ -21,8 +23,10 @@ export class QtnController {
   }
 
   @Get()
-  findAll() {
-    return this.qtnService.findAll();
+  findAll(@Query() query: QueryQtnDto) {
+    const lis = this.qtnService.find(query);
+    console.log(lis);
+    return lis;
   }
 
   @Get(':id')
