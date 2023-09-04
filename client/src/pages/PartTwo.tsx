@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, List, NavBar, Form, Grid, Modal } from "antd-mobile";
 
-import RadioGroup from "./components/RadioGroup";
-import CheckboxGroup from "./components/CheckboxGroup";
+import RadioGroup from "../components/RadioGroup";
+import CheckboxGroup from "../components/CheckboxGroup";
 
-import { remarkValidator, requireValidator } from "./validate";
-import { storage } from "./utils";
+import { remarkValidator, requireValidator } from "../validate";
+import { storage } from "../utils";
 
 const FormItem = Form.Item;
 const alert = Modal.alert;
@@ -19,7 +19,7 @@ const rate = [
   { value: 1, label: "非常同意" },
 ];
 
-function Page() {
+export default function Page() {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [disabled, setDisabled] = useState<boolean>();
@@ -242,5 +242,3 @@ function Page() {
     </>
   );
 }
-
-export default Page;

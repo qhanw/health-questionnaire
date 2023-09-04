@@ -3,7 +3,7 @@ import { Result, Button } from "antd-mobile";
 import { SmileOutline } from "antd-mobile-icons";
 import "./Result.css";
 
-function Page() {
+export default function Page() {
   const navigate = useNavigate();
   return (
     <div className="result">
@@ -24,5 +24,3 @@ function Page() {
     </div>
   );
 }
-
-export default Page;

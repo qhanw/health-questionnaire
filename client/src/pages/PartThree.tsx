@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, NavBar, Grid, Modal, Form } from "antd-mobile";
 
-import { remarkValidator, requireValidator } from "./validate";
-import Renderer from "./components/Renderer";
-import type { QuestionType } from "./components/Renderer";
-import { storage } from "./utils";
+import { remarkValidator, requireValidator } from "../validate";
+import Renderer from "../components/Renderer";
+import type { QuestionType } from "../components/Renderer";
+import { storage } from "../utils";
 
 const alert = Modal.alert;
 const questions: QuestionType[] = [
@@ -197,7 +197,7 @@ const questions: QuestionType[] = [
   },
 ];
 
-function Page() {
+export default function Page() {
   const navigate = useNavigate();
   const [form] = Form.useForm();
 
@@ -255,5 +255,3 @@ function Page() {
     </>
   );
 }
-
-export default Page;

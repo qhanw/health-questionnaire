@@ -4,14 +4,19 @@ import axios from "axios";
 
 export function useMutate() {
   const { data, run, loading } = useRequest(
-    (data, fn) => axios.post("/h5/add", data),
+    (data, fn) => axios.post("/api/sc-hq/h5/add", data),
     {
       manual: true,
       debounceWait: 800,
-      onSuccess: (res, params) => {
-        console.log(res);
-        if (res.code === 1) {
-          params[1]();
+      onSuccess: ({ data: res }: any, params) => {
+        if (res.code === 0) {
+          Toast.show({
+            icon: "success",
+            content: "问卷提交成功！",
+            afterClose: () => {
+              params[1]();
+            },
+          });
         } else {
           Toast.show({ icon: "fail", content: res.msg || "问卷提交失败！" });
         }
@@ -23,20 +28,23 @@ export function useMutate() {
 }
 
 export function useGetCode() {
-  const { data, run, loading } = useRequest(() => axios.get("/h5/getCode"), {
-    manual: true,
+  const { data, run, loading } = useRequest(
+    (data) => axios.get("/h5/getCode", data),
+    {
+      manual: true,
 
-    onSuccess: (res, params) => {
-      if (res.code === 1) {
-        if (params[1]) params[1]();
-      } else {
-        Toast.show({
-          icon: "fail",
-          content: res.msg || "验证码获取失败，请稍后再试！",
-        });
-      }
-    },
-  });
+      onSuccess: (res: any, params: any) => {
+        if (res?.code === 0) {
+          if (params[1]) params[1]();
+        } else {
+          Toast.show({
+            icon: "fail",
+            content: res.msg || "验证码获取失败，请稍后再试！",
+          });
+        }
+      },
+    }
+  );
 
   return { data, run, loading };
 }
@@ -46,8 +54,8 @@ export function useValidateCode() {
     (data, fn) => axios.post("/h5/validate", data),
     {
       manual: true,
-      onSuccess: (res, params) => {
-        if (res.code === 1) {
+      onSuccess: (res: any, params) => {
+        if (res.code === 0) {
           if (params[1]) params[1]();
         } else {
           Toast.show({ icon: "fail", content: res.msg || "验证失败！" });

@@ -8,10 +8,10 @@ import {
   ageValidator,
   familyPopulationValidator,
   requireValidator,
-} from "./validate";
-import { storage } from "./utils";
-import Renderer from "./components/Renderer";
-import type { QuestionType } from "./components/Renderer";
+} from "../validate";
+import { storage } from "../utils";
+import Renderer from "../components/Renderer";
+import type { QuestionType } from "../components/Renderer";
 
 const alert = Modal.alert;
 
@@ -138,7 +138,7 @@ const questions: QuestionType[] = [
   },
 ];
 
-function Page() {
+export default function Page() {
   const navigate = useNavigate();
   const [form] = Form.useForm();
 
@@ -197,5 +197,3 @@ function Page() {
     </>
   );
 }
-
-export default Page;

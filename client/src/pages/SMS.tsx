@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Form, Input, Toast, Button } from "antd-mobile";
 import { useNavigate } from "react-router-dom";
-import SendCode from "./components/SendCode";
-import { useValidateCode, useGetCode } from "./service";
-import { storage } from "./utils";
+import SendCode from "../components/SendCode";
+import { useValidateCode, useGetCode } from "../service";
+import { storage } from "../utils";
 import "./SMS.css";
 
-function SMS() {
+export default function SMS() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
@@ -120,5 +120,3 @@ function SMS() {
     </div>
   );
 }
-
-export default SMS;

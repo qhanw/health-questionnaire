@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, List, NavBar, Grid, Input, Modal, Form } from "antd-mobile";
-import RadioGroup from "./components/RadioGroup";
-import CheckboxGroup from "./components/CheckboxGroup";
+import RadioGroup from "../components/RadioGroup";
+import CheckboxGroup from "../components/CheckboxGroup";
 
-import { remarkValidator, requireValidator } from "./validate";
-import { storage } from "./utils";
-import { useMutate } from "./service";
+import { remarkValidator, requireValidator } from "../validate";
+import { storage } from "../utils";
+import { useMutate } from "../service";
 
 const FormItem = Form.Item;
 
@@ -27,7 +27,7 @@ const rateImportant = [
   { value: 5, label: "不重要" },
 ];
 
-function Page() {
+export default function Page() {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [disabled, setDisabled] = useState<boolean>(false);
@@ -87,7 +87,7 @@ function Page() {
       );
 
       run(submitValues, () => {
-        storage.clear();
+        // storage.clear();
         navigate("/", { replace: true });
         navigate("/result");
       });
@@ -297,5 +297,3 @@ function Page() {
     </>
   );
 }
-
-export default Page;

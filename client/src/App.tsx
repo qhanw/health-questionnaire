@@ -1,15 +1,16 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useMemo } from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import { NoticeBar } from "antd-mobile";
 import NoMatch from "./NoMatch";
 import { storage } from "./utils";
 
-const Home = React.lazy(() => import("./Home"));
-const PartOne = React.lazy(() => import("./PartOne"));
-const PartTwo = React.lazy(() => import("./PartTwo"));
-const PartThree = React.lazy(() => import("./PartThree"));
-const PartFour = React.lazy(() => import("./PartFour"));
-const Result = React.lazy(() => import("./Result"));
-const SMS = React.lazy(() => import("./SMS"));
+const Home = React.lazy(() => import("./pages/Home"));
+const PartOne = React.lazy(() => import("./pages/PartOne"));
+const PartTwo = React.lazy(() => import("./pages/PartTwo"));
+const PartThree = React.lazy(() => import("./pages/PartThree"));
+const PartFour = React.lazy(() => import("./pages/PartFour"));
+const Result = React.lazy(() => import("./pages/Result"));
+const SMS = React.lazy(() => import("./pages/SMS"));
 
 function PrivateRoute({ component: Component, auth, ...rest }: any) {
   let identity = storage.get("identity");
@@ -32,7 +33,11 @@ function PrivateRoute({ component: Component, auth, ...rest }: any) {
   );
 }
 
-export default () => {
+export default function App() {
+  const isMobile = useMemo(
+    () => /Mobi|Android|iPhone/i.test(navigator.userAgent),
+    []
+  );
   return (
     <Suspense
       fallback={
@@ -57,6 +62,13 @@ export default () => {
         </div>
       }
     >
+      {!isMobile ? (
+        <NoticeBar
+          content="使用手机浏览，体验更佳！！！"
+          color="alert"
+          closeable
+        />
+      ) : null}
       <BrowserRouter>
         <Routes>
           {[
@@ -77,4 +89,4 @@ export default () => {
       </BrowserRouter>
     </Suspense>
   );
-};
+}
