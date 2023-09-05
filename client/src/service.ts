@@ -4,7 +4,7 @@ import axios from "axios";
 
 export function useMutate() {
   const { data, run, loading } = useRequest(
-    (data, fn) => axios.post("/api/sc-hq/h5/add", data),
+    (data, fn) => axios.post("/api/sc-hq/qtn/create", data),
     {
       manual: true,
       debounceWait: 800,
@@ -29,7 +29,7 @@ export function useMutate() {
 
 export function useGetCode() {
   const { data, run, loading } = useRequest(
-    (data) => axios.get("/h5/getCode", data),
+    (data) => axios.get("/user/getCode", data),
     {
       manual: true,
 
@@ -51,7 +51,7 @@ export function useGetCode() {
 
 export function useValidateCode() {
   const { data, run, loading } = useRequest(
-    (data, fn) => axios.post("/h5/validate", data),
+    (data, fn) => axios.post("/user/validate", data),
     {
       manual: true,
       onSuccess: (res: any, params) => {
