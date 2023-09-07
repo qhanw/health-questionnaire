@@ -15,6 +15,7 @@ const SMS = lazy(() => import("./pages/SMS"));
 // admin
 const Statistics = lazy(() => import("./pages/adm/Statistics"));
 const UserLogin = lazy(() => import("./pages/adm/UserLogin"));
+const BaseLayout = lazy(() => import("./pages/adm/BaseLayout"));
 
 function PrivateRoute({ component: Component, auth, ...rest }: any) {
   let identity = storage.get("identity");
@@ -86,22 +87,26 @@ export default function App() {
             { path: "/result", component: Result },
 
             // admin
-            { path: "/adm", component: Statistics },
-            { path: "/adm/user/login", component: UserLogin },
-            { path: "/adm/statistics", component: Statistics },
-            { path: "*", component: NoMatch },
+            // { path: "/adm", component: Statistics },
+            // { path: "/adm/user/login", component: UserLogin },
+            // { path: "/adm/statistics", component: Statistics },
+            // { path: "*", component: NoMatch },
           ].map((c) => (
             //<PrivateRoute key={c.path} exact={true} {...c} />
             <Route key={c.path} path={c.path} element={<c.component />} />
           ))}
+
           {/* admin */}
-          {/* 
-          <Route path={"/adm"} element={<Statistics />} />
-
+          <Route element={<BaseLayout />}>
+            <Route
+              path={"/adm"}
+              element={<Navigate to={"/adm/statistics"} />}
+            />
+            <Route path={"/adm/statistics"} element={<Statistics />} />
+          </Route>
           <Route path={"/adm/user/login"} element={<UserLogin />} />
-          <Route path={"/adm/statistics"} element={<Statistics />} />
 
-          <Route path="*" element={<NoMatch />} /> */}
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </BrowserRouter>
     </Suspense>

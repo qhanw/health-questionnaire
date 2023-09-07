@@ -26,10 +26,7 @@ declare namespace API {
     currentAuthority?: string;
   };
 
-  type PageParams = {
-    current?: number;
-    pageSize?: number;
-  };
+  type PageParams = { current?: number; pageSize?: number };
 
   type RuleListItem = {
     key?: number;
