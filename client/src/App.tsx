@@ -1,6 +1,5 @@
-import { Suspense, useMemo, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import { NoticeBar } from "antd-mobile";
 import NoMatch from "./NoMatch";
 import { storage } from "./utils";
 
@@ -15,7 +14,8 @@ const SMS = lazy(() => import("./pages/SMS"));
 // admin
 const Statistics = lazy(() => import("./pages/adm/Statistics"));
 const UserLogin = lazy(() => import("./pages/adm/UserLogin"));
-const BaseLayout = lazy(() => import("./pages/adm/BaseLayout"));
+const MobileLayout = lazy(() => import("./layouts/MobileLayout"));
+const AdminLayout = lazy(() => import("./layouts/AdminLayout"));
 
 function PrivateRoute({ component: Component, auth, ...rest }: any) {
   let identity = storage.get("identity");
@@ -39,10 +39,6 @@ function PrivateRoute({ component: Component, auth, ...rest }: any) {
 }
 
 export default function App() {
-  const isMobile = useMemo(
-    () => /Mobi|Android|iPhone/i.test(navigator.userAgent),
-    []
-  );
   return (
     <Suspense
       fallback={
@@ -67,43 +63,39 @@ export default function App() {
         </div>
       }
     >
-      {!isMobile ? (
-        <NoticeBar
-          content="使用手机浏览，体验更佳！！！"
-          color="alert"
-          closeable
-        />
-      ) : null}
       <BrowserRouter>
         <Routes>
-          {[
-            { path: "/", component: Home },
-            { path: "/sms", component: SMS },
-            { path: "/part-1", auth: true, component: PartOne },
-            { path: "/part-2", auth: true, component: PartTwo },
-            { path: "/part-3", auth: true, component: PartThree },
-            { path: "/part-4", auth: true, component: PartFour },
-            // { path: "/404", component: E404 },
-            { path: "/result", component: Result },
+          <Route element={<MobileLayout />}>
+            {[
+              { path: "/", component: Home },
+              { path: "/sms", component: SMS },
+              { path: "/part-1", auth: true, component: PartOne },
+              { path: "/part-2", auth: true, component: PartTwo },
+              { path: "/part-3", auth: true, component: PartThree },
+              { path: "/part-4", auth: true, component: PartFour },
+              // { path: "/404", component: E404 },
+              { path: "/result", component: Result },
 
-            // admin
-            // { path: "/adm", component: Statistics },
-            // { path: "/adm/user/login", component: UserLogin },
-            // { path: "/adm/statistics", component: Statistics },
-            // { path: "*", component: NoMatch },
-          ].map((c) => (
-            //<PrivateRoute key={c.path} exact={true} {...c} />
-            <Route key={c.path} path={c.path} element={<c.component />} />
-          ))}
+              // admin
+              // { path: "/adm", component: Statistics },
+              // { path: "/adm/user/login", component: UserLogin },
+              // { path: "/adm/statistics", component: Statistics },
+              // { path: "*", component: NoMatch },
+            ].map((c) => (
+              //<PrivateRoute key={c.path} exact={true} {...c} />
+              <Route key={c.path} path={c.path} element={<c.component />} />
+            ))}
+          </Route>
 
           {/* admin */}
-          <Route element={<BaseLayout />}>
+          <Route element={<AdminLayout />}>
+            <Route path={"/adm/statistics"} element={<Statistics />} />
             <Route
               path={"/adm"}
               element={<Navigate to={"/adm/statistics"} />}
             />
-            <Route path={"/adm/statistics"} element={<Statistics />} />
           </Route>
+
           <Route path={"/adm/user/login"} element={<UserLogin />} />
 
           <Route path="*" element={<NoMatch />} />

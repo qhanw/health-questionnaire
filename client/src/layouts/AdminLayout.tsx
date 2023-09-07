@@ -27,6 +27,7 @@ export default function BaseLayout() {
   return (
     <ProLayout
       title="Health Questionnaire Admin"
+      logo="https://qhan.wang/favicon.png"
       token={{
         bgLayout: "#fff",
         header: { colorBgHeader: "#fff" },
@@ -37,7 +38,7 @@ export default function BaseLayout() {
       location={location}
       menu={{ type: "group" }}
       avatarProps={{
-        src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
+        src: "https://qhan.wang/favicon.png",
         size: "small",
         title: "Qhan W",
         render: (props, dom) => {

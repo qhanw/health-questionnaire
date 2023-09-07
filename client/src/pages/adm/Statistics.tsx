@@ -32,7 +32,7 @@ export default function TableList() {
   ];
 
   return (
-    <PageContainer>
+    <PageContainer title={false}>
       <ProTable<API.RuleListItem, API.PageParams>
         headerTitle="问卷列表"
         actionRef={actionRef}
@@ -47,9 +47,7 @@ export default function TableList() {
             //     { addQueryPrefix: true },
             //   )}`;
             // }}
-            onClick={() => {
-              window.location.href = `http://api.1dgt.com/pc/wenJuan/exportCsv`;
-            }}
+            onClick={() => (window.location.href = `/api/sc-hq/qtn/export-csv`)}
           >
             导出
           </Button>,

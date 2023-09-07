@@ -2,7 +2,7 @@ import {
   ChromeFilled,
   CrownFilled,
   SmileFilled,
-  OrderedListOutlined,
+  UnorderedListOutlined,
 } from "@ant-design/icons";
 
 export default {
@@ -18,7 +18,7 @@ export default {
       {
         path: "/adm/statistics",
         name: "问卷列表",
-        icon: <OrderedListOutlined />,
+        icon: <UnorderedListOutlined />,
         component: "./Welcome",
       },
       {
@@ -31,7 +31,7 @@ export default {
           {
             path: "/admin/sub-page1",
             name: "一级页面",
-            icon: "https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg",
+            icon: "https://qhan.wang/favicon.png",
             component: "./Welcome",
           },
           {
