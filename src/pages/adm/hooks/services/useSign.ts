@@ -9,7 +9,7 @@ export function useSign() {
   } = useRequest(
     /** eslint-disable-next-line @typescript-eslint/no-unused-vars */
     async (d: API.LoginParams, fn?: () => void) => {
-      const { data: res } = await axios.post("/api/sc-hq/user/login", d);
+      const { data: res } = await axios.post("/api/sc-hq/auth/login", d);
       return res;
     },
     { manual: true, onSuccess: () => {} }

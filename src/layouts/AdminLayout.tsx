@@ -13,7 +13,10 @@ import { Input, Dropdown } from "antd";
 
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 
+import axios from "axios";
+
 import defaultProps from "./_defaultProps";
+import { useEffect } from "react";
 
 const settings: Partial<ProSettings> | undefined = {
   fixSiderbar: true,
@@ -23,6 +26,16 @@ const settings: Partial<ProSettings> | undefined = {
 export default function BaseLayout() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const fetchUser = () => {
+    axios.get("/api/sc-hq/auth/profile", {
+      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <ProLayout

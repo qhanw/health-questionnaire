@@ -48,10 +48,11 @@ export default function UserLogin() {
       // 登录
       const res = await sign({ ...values, type: loginType });
 
-      console.log(res);
       if (res.status === "ok") {
         message.success("登录成功！");
         // await fetchUserInfo();
+
+        localStorage.setItem("token", res.data);
 
         const urlParams = new URL(window.location.href).searchParams;
         navigate(urlParams.get("redirect") || "/adm");
