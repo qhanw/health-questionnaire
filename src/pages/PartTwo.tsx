@@ -6,7 +6,7 @@ import RadioGroup from "../components/RadioGroup";
 import CheckboxGroup from "../components/CheckboxGroup";
 
 import { remarkValidator, requireValidator } from "../validate";
-import { storage } from "../utils";
+import { storage } from "../utils/utils";
 
 const FormItem = Form.Item;
 const alert = Modal.alert;

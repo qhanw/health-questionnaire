@@ -3,7 +3,7 @@ import { Form, Input, Toast, Button } from "antd-mobile";
 import { useNavigate } from "react-router-dom";
 import SendCode from "../components/SendCode";
 import { useValidateCode, useGetCode } from "../service";
-import { storage } from "../utils";
+import { storage } from "../utils/utils";
 import "./SMS.css";
 
 export default function SMS() {

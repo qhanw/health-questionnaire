@@ -1,17 +1,18 @@
 import { useRef } from "react";
-import axios from "axios";
 import { Button } from "antd";
 import type { FormInstance } from "antd";
 import { PageContainer, ProTable } from "@ant-design/pro-components";
 import type { ProColumns, ActionType } from "@ant-design/pro-components";
+
+import request from "@/utils/request";
 
 export default function TableList() {
   const actionRef = useRef<ActionType>();
   const formRef = useRef<FormInstance>();
 
   const fetchList = async ({ keyword, ...rest }: any) => {
-    const { data: res }: any = await axios.get("/api/sc-hq/qtn", {
-      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+    const { data: res }: any = await request("/api/sc-hq/qtn", {
+      // headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
       params: { ...rest, keyword: keyword || "" },
     });
     const { data = [], pagination } = res || {};

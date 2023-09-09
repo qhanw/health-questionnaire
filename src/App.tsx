@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import NoMatch from "./NoMatch";
-import { storage } from "./utils";
+import { storage } from "./utils/utils";
 
 const Home = lazy(() => import("./pages/Home"));
 const PartOne = lazy(() => import("./pages/PartOne"));

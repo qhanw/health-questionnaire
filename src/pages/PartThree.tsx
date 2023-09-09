@@ -7,7 +7,7 @@ import { Button, NavBar, Grid, Modal, Form } from "antd-mobile";
 import { remarkValidator, requireValidator } from "../validate";
 import Renderer from "../components/Renderer";
 import type { QuestionType } from "../components/Renderer";
-import { storage } from "../utils";
+import { storage } from "../utils/utils";
 
 const alert = Modal.alert;
 const questions: QuestionType[] = [

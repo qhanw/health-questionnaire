@@ -13,7 +13,7 @@ import { Input, Dropdown } from "antd";
 
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 
-import axios from "axios";
+import request from "@/utils/request";
 
 import defaultProps from "./_defaultProps";
 import { useEffect } from "react";
@@ -28,9 +28,7 @@ export default function BaseLayout() {
   const location = useLocation();
 
   const fetchUser = () => {
-    axios.get("/api/sc-hq/auth/profile", {
-      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
-    });
+    request("/api/sc-hq/auth/profile").catch(() => navigate("/adm/user/login"));
   };
 
   useEffect(() => {
