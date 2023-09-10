@@ -7,7 +7,7 @@ export function useSign() {
 
     loading,
   } = useRequest(
-    /** eslint-disable-next-line @typescript-eslint/no-unused-vars */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async (d: API.LoginParams, fn?: () => void) => {
       const { data: res } = await request("/api/sc-hq/auth/login", {
         method: "post",

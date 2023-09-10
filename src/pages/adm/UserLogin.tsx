@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { useSign } from "./hooks/services";
+import { local } from "@/utils/utils";
 
 type LoginType = "phone" | "account";
 
@@ -52,7 +53,7 @@ export default function UserLogin() {
         message.success("登录成功！");
         // await fetchUserInfo();
 
-        localStorage.setItem("token", res.data);
+        local.set("token", res.data);
 
         const urlParams = new URL(window.location.href).searchParams;
         navigate(urlParams.get("redirect") || "/adm");

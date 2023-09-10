@@ -12,7 +12,6 @@ export default function TableList() {
 
   const fetchList = async ({ keyword, ...rest }: any) => {
     const { data: res }: any = await request("/api/sc-hq/qtn", {
-      // headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
       params: { ...rest, keyword: keyword || "" },
     });
     const { data = [], pagination } = res || {};

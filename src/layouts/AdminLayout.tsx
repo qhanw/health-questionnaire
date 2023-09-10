@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import {
   GithubFilled,
   InfoCircleFilled,
@@ -11,29 +13,48 @@ import { ProLayout } from "@ant-design/pro-components";
 
 import { Input, Dropdown } from "antd";
 
-import { useNavigate, useLocation, Outlet } from "react-router-dom";
+import { useNavigate, useLocation, Outlet, Navigate } from "react-router-dom";
 
+import { useRequest } from "ahooks";
 import request from "@/utils/request";
+import { local } from "@/utils/utils";
 
 import defaultProps from "./_defaultProps";
-import { useEffect } from "react";
 
 const settings: Partial<ProSettings> | undefined = {
   fixSiderbar: true,
   layout: "mix",
 };
 
+function useUserInfo() {
+  const { data, loading } = useRequest(
+    async () => {
+      const token = local.get("token");
+      if (!token) return undefined;
+
+      const userinfo = local.get("userinfo");
+      if (userinfo) return userinfo;
+
+      const { data: res } = await request("/api/sc-hq/auth/profile");
+      return res.data;
+    },
+    {
+      onSuccess: (d) => {
+        local.set("userinfo", d);
+      },
+    }
+  );
+
+  return { data, loading };
+}
+
 export default function BaseLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const fetchUser = () => {
-    request("/api/sc-hq/auth/profile").catch(() => navigate("/adm/user/login"));
-  };
+  const { loading, data: userinfo } = useUserInfo();
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  if (!userinfo && !loading) return <Navigate to="/adm/user/login" replace />;
 
   return (
     <ProLayout
@@ -61,6 +82,10 @@ export default function BaseLayout() {
                     key: "logout",
                     icon: <LogoutOutlined />,
                     label: "退出登录",
+                    onClick: () => {
+                      local.clear();
+                      navigate("/adm/user/login");
+                    },
                   },
                 ],
               }}
@@ -123,7 +148,10 @@ export default function BaseLayout() {
       )}
       {...settings}
     >
-      <Outlet />
+      {/* reference: https://github.com/ant-design/pro-components/issues/6264 */}
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </ProLayout>
   );
 }

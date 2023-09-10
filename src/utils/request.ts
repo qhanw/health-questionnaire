@@ -1,6 +1,8 @@
 import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
 import { notification } from "antd";
+import { redirect } from "react-router-dom";
+import { local } from "@/utils/utils";
 
 // 添加响应拦截器
 axios.interceptors.response.use(
@@ -20,8 +22,9 @@ axios.interceptors.response.use(
         message: `${status}: ${statusText}`,
         description: `${error.message}.(${data.name}: ${data.message})`,
       });
-    } else {
-      // TODO: Redirect to login page
+
+      //  Redirect to login page
+      redirect("/");
     }
 
     return Promise.reject(error);
@@ -29,7 +32,7 @@ axios.interceptors.response.use(
 );
 
 export default function request(url: string, options?: AxiosRequestConfig) {
-  const token = localStorage.getItem("token");
+  const token = local.get("token");
   return axios({
     ...options,
     url,

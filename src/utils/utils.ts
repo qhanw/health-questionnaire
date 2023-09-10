@@ -23,3 +23,16 @@ export const storage = {
     sessionStorage.clear();
   },
 };
+
+export const local = {
+  set: (name: string, data: any) => {
+    localStorage.setItem(name, _serialize(data));
+  },
+
+  get: (name: string) => {
+    return _deserialize(localStorage[name]);
+  },
+  clear: () => {
+    localStorage.clear();
+  },
+};
